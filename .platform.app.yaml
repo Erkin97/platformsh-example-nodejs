@@ -3,7 +3,7 @@ type: nodejs:10
 
 dependencies:
   nodejs:
-    pm2: "^2.5.0",
+    pm2: "^2.5.0"
     express: "^4.16.4"
 
 web:
