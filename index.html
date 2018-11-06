@@ -68,7 +68,6 @@
   }
   function add_video() {
     var video_id = get_video_id(document.getElementById('link').value);
-    alert(video_id);
     var player_width = document.getElementById('check_my_width').offsetWidth;
     var new_code = '<iframe width = 500 height = 500 align= "middle"' + '" src="https://www.youtube.com/embed/' + video_id + '" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
     document.getElementById("demo").innerHTML = new_code;
