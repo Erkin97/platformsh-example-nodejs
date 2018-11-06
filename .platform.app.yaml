@@ -4,7 +4,7 @@ type: nodejs:10
 dependencies:
   nodejs:
     pm2: "^2.5.0",
-    npm: "^6.4.1"
+    express: "^4.16.4"
 
 web:
   commands:

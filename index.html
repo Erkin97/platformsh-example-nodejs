@@ -1,64 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<html>
 
-    <title>xxx</title>
+<head>
+  <title> PSIX - HackYouTube </title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/fonts.css">
-    <link rel="stylesheet" href="css/customize.css">
-  </head>
-  <body>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h1><a id="PSIX_HackYouTube_sample_website_0"></a>PSIX HackYouTube sample website</h1>
+        <blockquote>
+          <p>This is a sample project for testing service of <a href="http://platform.sh">platform.sh</a></p>
+        </blockquote>
+        <ul>
+          <li>Put the link of your video</li>
+          <li>Enjoy</li>
+        </ul>
+        </div>
+        <div class="col-md-8" id="check_my_width">
+          <div class="well well-sm">
+            <h1>HackYouTube player</h1>
+                <label for="word">Video link:</label>
+                <input type="word" class="form-control" id="link">
+              
+              <button onclick="add_video()" class="btn">
+                Submit
+              </button>
+              <p class="hack_player">
 
+              </p>
+              <p id="demo"></p>
+          </div>
+        </div>
+      </div> <!-- end of row -->
+    </div> <!-- end of container -->
+</body>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<div class="container">
-
-<div class="card card-inverse card-primary mb-3 text-center">
-  <div class="card-block">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
-<div class="card card-inverse card-success mb-3 text-center">
-  <div class="card-block">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
-<div class="card card-inverse card-info mb-3 text-center">
-  <div class="card-block">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
-<div class="card card-inverse card-warning mb-3 text-center">
-  <div class="card-block">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
-<div class="card card-inverse card-danger text-center">
-  <div class="card-block">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
-
-
-
-  </body>
+<!-- Latest compiled and minified JavaScript -->
+<!-- Core scripts-->
+<script>
+function get_video_id(v_url){
+  if (v_url.indexOf("watch") == -1) {
+    return "-1";
+  }
+  var i = v_url.indexOf("v=");
+  if (i == -1) return "-1";
+  var ans = "";
+  for (i = i + 2; i < v_url.length; i++) {
+    if (v_url[i] == '?' || v_url[i] == '/' || v_url[i] == '&') {
+      return ans;
+    }
+    ans += v_url[i];
+  }
+  return ans;
+}    
+function add_video() {
+  var video_id = get_video_id(document.getElementById('link').value);
+  alert(video_id);
+  var player_width = document.getElementById('check_my_width').offsetWidth;
+  var new_code = '<iframe width = 500 height = 500 align= "middle"' + '" src="https://www.youtube.com/embed/'+ video_id +'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+  document.getElementById("demo").innerHTML = new_code;
+}
+</script>
 </html>

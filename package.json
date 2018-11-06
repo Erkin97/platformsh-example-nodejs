@@ -9,6 +9,7 @@
   "author": "Ori Pekelman",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.16.4",
     "platformsh": "^1.0.0"
   }
 }
