@@ -11,32 +11,39 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <h1><a id="PSIX_HackYouTube_sample_website_0"></a>PSIX HackYouTube sample website</h1>
+        <h1><a id="PSIX_HackYouTube_sample_website_0"></a>PSIXs HackYouTube sample website</h1>
         <blockquote>
-          <p>This is a sample project for testing service of <a href="http://platform.sh">platform.sh</a></p>
+          <p>This is a sample project for testing service of <a href="http://platform.sh">platform.sh</a>. It’s a
+            simple web version of the <a href="https://chrome.google.com/webstore/detail/beminpnpkipkcjiihdajhljlfokajddl">HackYouTube
+              chrome extension</a>.</p>
         </blockquote>
         <ul>
           <li>Put the link of your video</li>
-          <li>Enjoy</li>
+          <li>Press submit</li>
         </ul>
-        </div>
-        <div class="col-md-8" id="check_my_width">
-          <div class="well well-sm">
-            <h1>HackYouTube player</h1>
-                <label for="word">Video link:</label>
-                <input type="word" class="form-control" id="link">
-              
-              <button onclick="add_video()" class="btn">
-                Submit
-              </button>
-              <p class="hack_player">
+        <h1><a id="Source_codes_7"></a>Source codes:</h1>
+        <ul>
+          <li><a href="https://github.com/Erkin97/platformsh-example-nodejs">https://github.com/Erkin97/platformsh-example-nodejs</a>
+            - forked example code and modified</li>
+        </ul>
+      </div>
+      <div class="col-md-8" id="check_my_width">
+        <div class="well well-sm">
+          <h1>HackYouTube player</h1>
+          <label for="word">Video link:</label>
+          <input type="word" class="form-control" id="link">
 
-              </p>
-              <p id="demo"></p>
-          </div>
+          <button onclick="add_video()" class="btn">
+            Submit
+          </button>
+          <p class="hack_player">
+
+          </p>
+          <p id="demo"></p>
         </div>
-      </div> <!-- end of row -->
-    </div> <!-- end of container -->
+      </div>
+    </div> <!-- end of row -->
+  </div> <!-- end of container -->
 </body>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -44,27 +51,28 @@
 <!-- Latest compiled and minified JavaScript -->
 <!-- Core scripts-->
 <script>
-function get_video_id(v_url){
-  if (v_url.indexOf("watch") == -1) {
-    return "-1";
-  }
-  var i = v_url.indexOf("v=");
-  if (i == -1) return "-1";
-  var ans = "";
-  for (i = i + 2; i < v_url.length; i++) {
-    if (v_url[i] == '?' || v_url[i] == '/' || v_url[i] == '&') {
-      return ans;
+  function get_video_id(v_url) {
+    if (v_url.indexOf("watch") == -1) {
+      return "-1";
     }
-    ans += v_url[i];
+    var i = v_url.indexOf("v=");
+    if (i == -1) return "-1";
+    var ans = "";
+    for (i = i + 2; i < v_url.length; i++) {
+      if (v_url[i] == '?' || v_url[i] == '/' || v_url[i] == '&') {
+        return ans;
+      }
+      ans += v_url[i];
+    }
+    return ans;
   }
-  return ans;
-}    
-function add_video() {
-  var video_id = get_video_id(document.getElementById('link').value);
-  alert(video_id);
-  var player_width = document.getElementById('check_my_width').offsetWidth;
-  var new_code = '<iframe width = 500 height = 500 align= "middle"' + '" src="https://www.youtube.com/embed/'+ video_id +'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
-  document.getElementById("demo").innerHTML = new_code;
-}
+  function add_video() {
+    var video_id = get_video_id(document.getElementById('link').value);
+    alert(video_id);
+    var player_width = document.getElementById('check_my_width').offsetWidth;
+    var new_code = '<iframe width = 500 height = 500 align= "middle"' + '" src="https://www.youtube.com/embed/' + video_id + '" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+    document.getElementById("demo").innerHTML = new_code;
+  }
 </script>
+
 </html>
